@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
+const API_URL = "https://student-task-manager-qe6n.onrender.com";
+
 function App() {
   const [tasks, setTasks] = useState([]);
   const [showForm, setShowForm] = useState(false);
@@ -18,7 +20,7 @@ function App() {
 const [statusFilter, setStatusFilter] = useState("All");
 
   const fetchTasks = () => {
-    fetch("http://localhost:5000/api/tasks")
+    fetch("https://student-task-manager-qe6n.onrender.com/api/tasks")
       .then((response) => response.json())
       .then((data) => setTasks(data))
       .catch((error) => console.error("Error:", error));
@@ -39,7 +41,7 @@ const [statusFilter, setStatusFilter] = useState("All");
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/api/tasks", {
+      const response = await fetch("https://student-task-manager-qe6n.onrender.com/api/tasks", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -78,7 +80,7 @@ const handleDelete = async (id) => {
 
   try {
     const response = await fetch(
-      `http://localhost:5000/api/tasks/${id}`,
+      `https://student-task-manager-qe6n.onrender.com/api/tasks/${id}`,
       { method: "DELETE" }
     );
 
@@ -120,7 +122,7 @@ const handleEdit = async (task) => {
 
   try {
     const response = await fetch(
-      `http://localhost:5000/api/tasks/${task._id}`,
+      `https://student-task-manager-qe6n.onrender.com/api/tasks/${task._id}`,
       {
         method: "PUT",
         headers: {
